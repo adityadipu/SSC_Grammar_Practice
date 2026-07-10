@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive Grammar Practice for SSC and HSC students." />
+    <title>Grammar Master - RFV & Prepositions</title>
+    
+    <!-- Emoji Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <div>
+                        <h1>Grammar Master</h1>
+                        <p class="subtitle">Practice RFV & Prepositions</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Exercises</span>
+                        <span class="stat-value" id="totalExercises">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Your Score</span>
+                        <span class="stat-value" id="totalScore">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Correct</span>
+                        <span class="stat-value" id="correctCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Exercise Area -->
+        <section id="practice" class="card exercise-card">
+            <div class="exercise-controls">
+                <div class="controls-left">
+                    <!-- NEW: Topic Selector -->
+                    <select id="topicSelector" class="filter-select">
+                        <option value="rfv">📝 Right Forms of Verbs (RFV)</option>
+                        <option value="preposition">🔗 Prepositions</option>
+                    </select>
+                    
+                    <select id="boardFilter" class="filter-select">
+                        <option value="all">📋 All Boards</option>
+                        <option value="dhaka">Dhaka Board</option>
+                        <option value="rajshahi">Rajshahi Board</option>
+                        <option value="jashore">Jashore Board</option>
+                        <option value="cumilla">Cumilla Board</option>
+                        <option value="chattogram">Chattogram Board</option>
+                        <option value="sylhet">Sylhet Board</option>
+                        <option value="barisal">Barisal Board</option>
+                        <option value="dinajpur">Dinajpur Board</option>
+                        <option value="mymensingh">Mymensingh Board</option>
+                        <option value="part A">Part A (Examples)</option>
+                        <option value="part D">Part D (New)</option>
+                    </select>
+                </div>
+                <div class="controls-right">
+                    <button id="shuffleBtn" class="btn btn-secondary">🔀 Shuffle</button>
+                    <button id="resetBtn" class="btn btn-secondary">🔄 Reset</button>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="progress-info">
+                    <span class="progress-label">Progress</span>
+                    <span class="progress-text" id="progressText">0 / 0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="score-display">
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="scoreValue">0</span>
+                    <span class="score-total">/ 0</span>
+                </div>
+            </div>
+
+            <!-- Word Box -->
+            <div class="word-box" id="wordBox">
+                <div class="word-box-header">
+                    <span class="word-box-label">📦 Word Bank</span>
+                    <span class="word-box-count" id="wordCount">0 words</span>
+                </div>
+                <div class="word-box-content" id="wordBoxContent"></div>
+            </div>
+
+            <!-- Exercise Content -->
+            <div class="exercise-content">
+                <div class="exercise-header">
+                    <div class="exercise-meta">
+                        <span class="board-tag" id="exerciseBoard">-</span>
+                        <span class="year-tag" id="exerciseYear">-</span>
+                        <span class="id-tag" id="exerciseId">#-</span>
+                    </div>
+                    <div class="exercise-instruction">
+                        <p>Type your answers directly into the blanks below. Click "Submit All" when done.</p>
+                    </div>
+                </div>
+
+                <div class="passage-container">
+                    <div class="passage" id="passageText"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons-container">
+                    <button id="submitAllBtn" class="btn btn-primary btn-large">📤 Submit All Answers</button>
+                    <button id="clearAllBtn" class="btn btn-outline">🗑️ Clear All</button>
+                    <button id="showAllHintsBtn" class="btn btn-outline">💡 Show All Hints</button>
+                </div>
+
+                <!-- Results Area -->
+                <div id="resultsArea" class="results-area">
+                    <div class="results-header">
+                        <h3>📊 Results</h3>
+                        <span class="results-score" id="resultsScore">0 / 0</span>
+                    </div>
+                    <div class="results-list" id="resultsList"></div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation">
+                    <button id="prevBtn" class="btn btn-outline nav-btn">← Previous</button>
+                    <div class="nav-center">
+                        <span class="nav-counter" id="questionCounter">1 / 0</span>
+                        <div class="nav-dots" id="navDots"></div>
+                    </div>
+                    <button id="nextBtn" class="btn btn-primary nav-btn">Next →</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Grammar Master · Interactive Practice</p>
+            <p class="footer-sub">Based on Board Exam Questions</p>
+        </div>
+    </footer>
+
+    <!-- Load both data files -->
+    <script src="data_rfv.js"></script>
+    <script src="data_preposition.js"></script>
+    <script src="app.js"></script>
+    
+    <!-- Explanation Modal (Popup) -->
+    <div id="explanationModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📖 Detailed Grammar Explanation</h3>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Blank:</strong> <span id="modalLetter"></span></p>
+                <p><strong>Your Answer:</strong> <span id="modalYourAnswer"></span></p>
+                <p><strong>Correct Answer:</strong> <span id="modalCorrectAnswer"></span></p>
+                <hr />
+                <h4>Why is this correct?</h4>
+                <p id="modalExplanationText" class="modal-explanation-text"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
